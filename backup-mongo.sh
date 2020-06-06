@@ -13,8 +13,7 @@ if ! mkdir -p $BACKUPS_DIR; then
 	echo "Can't create backup directory in $BACKUPS_DIR. Go and fix it!" 1>&2;
 exit 1;
 fi;
-
-mongodump -h mongo --port $DB_PORT -u "$DB_USER" -p "DB_PASSWORD" -d $MONGO_DATABASE -o $BACKUPS_DIR/$BACKUP_NAME --verbose;
+mongodump -h mongo -u $DB_USER -p $DB_PASSWORD -d $MONGO_DATABASE --authenticationDatabase=admin -o $BACKUPS_DIR/$BACKUP_NAME --verbose;
 find $BACKUPS_DIR -mtime +$DAYSTORETAINBACKUP -exec rm -rf {} +;
 echo "--------------------------------------------" 1>&2;
 echo "Database backup complete!" 1>&2;
