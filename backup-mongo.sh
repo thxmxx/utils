@@ -1,5 +1,5 @@
 MONGO_DATABASE=$1;
-BACKUPS_DIR="/dump/mongobackups/";
+BACKUPS_DIR=$4"/mongobackups";
 DAYSTORETAINBACKUP="5";
 DB_USER=$2;
 DB_PASSWORD=$3;
